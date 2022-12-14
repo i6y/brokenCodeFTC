@@ -1,3 +1,26 @@
+/*@Autonoumous -- if we have time, do autonomous stage
+
+//touch sensor
+// set digital channel to input mode.
+digitalTouch.setMode(DigitalChannel.Mode.INPUT);
+
+telemetry.addData("Status", "Initialized");
+telemetry.update();
+// Wait for the game to start (driver presses PLAY)
+waitForStart();
+// is button pressed?
+if (digitalTouch.getState() == false) {
+    // button is pressed.
+    telemetry.addData("Button", "PRESSED");
+} else {
+    // button is not pressed.
+    telemetry.addData("Button", "NOT PRESSED");
+}
+
+telemetry.addData("Status", "Running");
+telemetry.update();
+*/
+
 @TeleOp
 public class MyFIRSTJavaOpMode extends LinearOpMode {
     private Gyroscope imu;
@@ -66,15 +89,3 @@ while (opModeIsActive()) {
 
 }
 
-//touch sensor
-// is button pressed?
-if (digitalTouch.getState() == false) {
-    // button is pressed.
-    telemetry.addData("Button", "PRESSED");
-} else {
-    // button is not pressed.
-    telemetry.addData("Button", "NOT PRESSED");
-}
-
-telemetry.addData("Status", "Running");
-telemetry.update();
