@@ -25,12 +25,15 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name = "Run1 (Blocks to Java)")
 public class Run1 extends LinearOpMode {
 
+  private CRServo Hand;
   private DcMotor Backleft;
   private DcMotor Backright;
   private DcMotor Frontleft;
@@ -41,6 +44,7 @@ public class Run1 extends LinearOpMode {
    */
   @Override
   public void runOpMode() {
+    Hand = hardwareMap.get(CRServo.class, "Hand");
     Backleft = hardwareMap.get(DcMotor.class, "Backleft");
     Backright = hardwareMap.get(DcMotor.class, "Backright");
     Frontleft = hardwareMap.get(DcMotor.class, "Frontleft");
@@ -68,10 +72,27 @@ public class Run1 extends LinearOpMode {
             }
           }
         }
+        if (gamepad1.a) {
+          grab();
+        } else {
+          if (gamepad1.b) {
+            release();
+          } else {
+            Hand.setPower(0);
+          }
+        }
+        telemetry.addData("Status", "Running");
+        telemetry.update();
       }
-      telemetry.addData("Status", "Running");
-      telemetry.update();
     }
+  }
+
+  /**
+   * Describe this function...
+   */
+  private void grab() {
+    Hand.setDirection(DcMotorSimple.Direction.FORWARD);
+    Hand.setPower(0.1);
   }
 
   /**
@@ -86,6 +107,14 @@ public class Run1 extends LinearOpMode {
     Frontleft.setPower(0.2);
     Frontright.setDirection(DcMotorSimple.Direction.REVERSE);
     Frontright.setPower(0.2);
+  }
+
+  /**
+   * Describe this function...
+   */
+  private void release() {
+    Hand.setDirection(DcMotorSimple.Direction.REVERSE);
+    Hand.setPower(0.1);
   }
 
   /**
