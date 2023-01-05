@@ -46,18 +46,27 @@ public class Run1 extends LinearOpMode {
     Frontleft = hardwareMap.get(DcMotor.class, "Frontleft");
     Frontright = hardwareMap.get(DcMotor.class, "Frontright");
 
+    // Put initialization blocks here.
     telemetry.addData("Status", "Initialized");
     waitForStart();
     if (opModeIsActive()) {
       while (opModeIsActive()) {
-        while (gamepad1.dpad_left) {
-          left();
-        }
-        while (gamepad1.dpad_right) {
-          right();
-        }
-        while (gamepad1.dpad_up) {
+        if (gamepad1.dpad_up) {
           forward();
+        } else {
+          if (gamepad1.dpad_down) {
+            backward();
+          } else {
+            if (gamepad1.dpad_right) {
+              right();
+            } else {
+              if (gamepad1.dpad_left) {
+                left();
+              } else {
+                wait();
+              }
+            }
+          }
         }
       }
       telemetry.addData("Status", "Running");
@@ -65,10 +74,55 @@ public class Run1 extends LinearOpMode {
     }
   }
 
+  /**
+   * Describe this function...
+   */
   private void left() {
+    Backleft.setDirection(DcMotorSimple.Direction.REVERSE);
+    Backleft.setPower(0.2);
+    Backright.setDirection(DcMotorSimple.Direction.FORWARD);
+    Backright.setPower(0.2);
+    Frontleft.setDirection(DcMotorSimple.Direction.FORWARD);
+    Frontleft.setPower(0.2);
+    Frontright.setDirection(DcMotorSimple.Direction.REVERSE);
+    Frontright.setPower(0.2);
+  }
+
+  /**
+   * Describe this function...
+   */
+  private void right() {
+    Backleft.setDirection(DcMotorSimple.Direction.FORWARD);
+    Backleft.setPower(0.2);
+    Backright.setDirection(DcMotorSimple.Direction.REVERSE);
+    Backright.setPower(0.2);
+    Frontleft.setDirection(DcMotorSimple.Direction.REVERSE);
+    Frontleft.setPower(0.2);
+    Frontright.setDirection(DcMotorSimple.Direction.FORWARD);
+    Frontright.setPower(0.2);
+  }
+
+  /**
+   * Describe this function...
+   */
+  private void forward() {
     Backleft.setDirection(DcMotorSimple.Direction.FORWARD);
     Backleft.setPower(0.2);
     Backright.setDirection(DcMotorSimple.Direction.FORWARD);
+    Backright.setPower(0.2);
+    Frontleft.setDirection(DcMotorSimple.Direction.FORWARD);
+    Frontleft.setPower(0.2);
+    Frontright.setDirection(DcMotorSimple.Direction.FORWARD);
+    Frontright.setPower(0.2);
+  }
+
+  /**
+   * Describe this function...
+   */
+  private void backward() {
+    Backleft.setDirection(DcMotorSimple.Direction.REVERSE);
+    Backleft.setPower(0.2);
+    Backright.setDirection(DcMotorSimple.Direction.REVERSE);
     Backright.setPower(0.2);
     Frontleft.setDirection(DcMotorSimple.Direction.REVERSE);
     Frontleft.setPower(0.2);
@@ -76,39 +130,15 @@ public class Run1 extends LinearOpMode {
     Frontright.setPower(0.2);
   }
 
-  private void right() {
-    Backleft.setDirection(DcMotorSimple.Direction.REVERSE);
-    Backleft.setPower(0.2);
-    Backright.setDirection(DcMotorSimple.Direction.REVERSE);
-    Backright.setPower(0.2);
-    Frontleft.setDirection(DcMotorSimple.Direction.FORWARD);
-    Frontleft.setPower(0.2);
-    Frontright.setDirection(DcMotorSimple.Direction.FORWARD);
-    Frontright.setPower(0.2);
+  /**
+   * Describe this function...
+   */
+  private void wait() {
+    Backleft.setPower(0);
+    Backright.setPower(0);
+    Frontleft.setPower(0);
+    Frontright.setPower(0);
   }
-
-  private void forward() {
-    Backleft.setDirection(DcMotorSimple.Direction.REVERSE);
-    Backleft.setPower(0.2);
-    Backright.setDirection(DcMotorSimple.Direction.REVERSE);
-    Backright.setPower(0.2);
-    Frontleft.setDirection(DcMotorSimple.Direction.FORWARD);
-    Frontleft.setPower(0.2);
-    Frontright.setDirection(DcMotorSimple.Direction.FORWARD);
-    Frontright.setPower(0.2);
-  }
-}
-
-// run until the end of the match (driver presses STOP)
-double tgtPower = 0;
-while (opModeIsActive()) {
-    tgtPower = -this.gamepad1.left_stick_y;
-    motorTest.setPower(tgtPower);
-    telemetry.addData("Target Power", tgtPower);
-    telemetry.addData("Motor Power", motorTest.getPower());
-    telemetry.addData("Status", "Running");
-    telemetry.update();
-
 }
 
 //control a servo
