@@ -90,14 +90,6 @@ public class Run1 extends LinearOpMode {
   /**
    * Describe this function...
    */
-  private void grab() {
-    Hand.setDirection(DcMotorSimple.Direction.FORWARD);
-    Hand.setPower(0.1);
-  }
-
-  /**
-   * Describe this function...
-   */
   private void left() {
     Backleft.setDirection(DcMotorSimple.Direction.REVERSE);
     Backleft.setPower(0.2);
@@ -107,14 +99,6 @@ public class Run1 extends LinearOpMode {
     Frontleft.setPower(0.2);
     Frontright.setDirection(DcMotorSimple.Direction.REVERSE);
     Frontright.setPower(0.2);
-  }
-
-  /**
-   * Describe this function...
-   */
-  private void release() {
-    Hand.setDirection(DcMotorSimple.Direction.REVERSE);
-    Hand.setPower(0.1);
   }
 
   /**
@@ -167,6 +151,27 @@ public class Run1 extends LinearOpMode {
     Backright.setPower(0);
     Frontleft.setPower(0);
     Frontright.setPower(0);
+  }
+    
+  /**
+  * Describe this function...
+  */
+  private void grab() {
+      // 180 degrees
+    servoTest.setPosition(1);
+//     Hand.setDirection(DcMotorSimple.Direction.FORWARD);
+//     Hand.setPower(0.1);
+      
+  }
+   
+  /**
+   * Describe this function...
+   */
+  private void release() {
+      // 0 degrees
+      servoTest.setPosition(0);
+//     Hand.setDirection(DcMotorSimple.Direction.REVERSE);
+//     Hand.setPower(0.1);
   }
 }
 
