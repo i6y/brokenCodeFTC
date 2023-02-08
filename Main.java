@@ -28,62 +28,70 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name = "_5276OpMode2 (Blocks to Java)")
-public class _5276OpMode2 extends LinearOpMode {
+@TeleOp(name = "_5276OpMode (Blocks to Java)")
+public class _5276OpMode extends LinearOpMode {
 
+  private DcMotor frontright;
+  private DcMotor frontleft;
+  private DcMotor backleft;
+  private DcMotor backright;
   private DcMotor lift;
   private DcMotor span;
   private Servo testcontrol;
   private CRServo test;
-  private DcMotor frontright;
-  private DcMotor frontleft;
-  private DcMotor backright;
-  private DcMotor backleft;
+
+  ElapsedTime TIME;
+  int startPos;
 
   /**
    * This function is executed when this Op Mode is selected from the Driver Station.
    */
   @Override
   public void runOpMode() {
+    frontright = hardwareMap.get(DcMotor.class, "frontright");
+    frontleft = hardwareMap.get(DcMotor.class, "frontleft");
+    backleft = hardwareMap.get(DcMotor.class, "backleft");
+    backright = hardwareMap.get(DcMotor.class, "backright");
     lift = hardwareMap.get(DcMotor.class, "lift");
     span = hardwareMap.get(DcMotor.class, "span");
     testcontrol = hardwareMap.get(Servo.class, "testcontrol");
     test = hardwareMap.get(CRServo.class, "test");
-    frontright = hardwareMap.get(DcMotor.class, "frontright");
-    frontleft = hardwareMap.get(DcMotor.class, "frontleft");
-    backright = hardwareMap.get(DcMotor.class, "backright");
-    backleft = hardwareMap.get(DcMotor.class, "backleft");
 
     // Put initialization blocks here.
-    lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    frontright.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    frontleft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    backleft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    backright.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     waitForStart();
     if (opModeIsActive()) {
       // Put run blocks here.
       while (opModeIsActive()) {
         if (gamepad1.dpad_up) {
-          set_power();
           forward();
+          start2();
         } else {
           if (gamepad1.dpad_down) {
-            set_power();
             reverse();
+            start2();
           } else {
             if (gamepad1.dpad_right) {
-              set_power();
               right();
+              start2();
             } else {
               if (gamepad1.dpad_left) {
-                set_power();
                 left();
+                start2();
               } else {
                 if (gamepad1.x) {
-                  set_power();
                   ccw();
+                  start2();
                 } else {
                   if (gamepad1.b) {
-                    set_power();
                     cw();
+                    start2();
                   } else {
                     stop2();
                   }
@@ -93,6 +101,7 @@ public class _5276OpMode2 extends LinearOpMode {
           }
         }
         span.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        startPos = lift.getCurrentPosition();
         if (gamepad2.dpad_up) {
           out();
         } else {
@@ -108,43 +117,26 @@ public class _5276OpMode2 extends LinearOpMode {
           if (gamepad2.right_bumper) {
             down();
           } else {
-            lift.setPower(0);
+            lift.setPower(0.001);
           }
         }
-        if (gamepad1.y) {
-          testcontrol.setPosition(testcontrol.getPosition() + 1);
+        if (gamepad2.a) {
+          my_0();
         } else {
-          testcontrol.setPosition(testcontrol.getPosition());
+          if (gamepad2.x) {
+            my_1();
+          } else {
+            if (gamepad2.y) {
+              my_2();
+            } else {
+              if (gamepad2.b) {
+                my_3();
+              }
+            }
+          }
         }
-        if (gamepad1.a) {
-          test.setDirection(DcMotorSimple.Direction.FORWARD);
-          test.setPower(0.1);
-        } else {
-          test.setPower(0);
-        }
-        telemetry.update();
       }
     }
-  }
-
-  /**
-   * Describe this function...
-   */
-  private void set_power() {
-    frontright.setPower(0.7);
-    frontleft.setPower(0.7);
-    backright.setPower(0.7);
-    backleft.setPower(0.7);
-  }
-
-  /**
-   * Describe this function...
-   */
-  private void stop2() {
-    frontright.setPower(0);
-    frontleft.setPower(0);
-    backright.setPower(0);
-    backleft.setPower(0);
   }
 
   /**
@@ -170,7 +162,27 @@ public class _5276OpMode2 extends LinearOpMode {
   /**
    * Describe this function...
    */
+  private void stop2() {
+    frontright.setPower(0);
+    frontleft.setPower(0);
+    backright.setPower(0);
+    backleft.setPower(0);
+  }
+
+  /**
+   * Describe this function...
+   */
   private void right() {
+    frontright.setDirection(DcMotorSimple.Direction.REVERSE);
+    frontleft.setDirection(DcMotorSimple.Direction.FORWARD);
+    backright.setDirection(DcMotorSimple.Direction.FORWARD);
+    backleft.setDirection(DcMotorSimple.Direction.REVERSE);
+  }
+
+  /**
+   * Describe this function...
+   */
+  private void left() {
     frontright.setDirection(DcMotorSimple.Direction.FORWARD);
     frontleft.setDirection(DcMotorSimple.Direction.REVERSE);
     backright.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -180,11 +192,11 @@ public class _5276OpMode2 extends LinearOpMode {
   /**
    * Describe this function...
    */
-  private void left() {
-    frontright.setDirection(DcMotorSimple.Direction.REVERSE);
-    frontleft.setDirection(DcMotorSimple.Direction.FORWARD);
-    backright.setDirection(DcMotorSimple.Direction.FORWARD);
-    backleft.setDirection(DcMotorSimple.Direction.REVERSE);
+  private void start2() {
+    frontright.setPower(0.4);
+    frontleft.setPower(0.4);
+    backright.setPower(0.4);
+    backleft.setPower(0.4);
   }
 
   /**
@@ -226,20 +238,72 @@ public class _5276OpMode2 extends LinearOpMode {
   /**
    * Describe this function...
    */
-  private void up() {
+  private void down() {
+    lift.setDirection(DcMotorSimple.Direction.REVERSE);
     lift.setPower(0.3);
-    lift.setTargetPosition(backleft.getCurrentPosition() - 780);
+    lift.setTargetPosition(lift.getCurrentPosition() - 100);
     lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-    lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
   }
 
   /**
    * Describe this function...
    */
-  private void down() {
+  private void up() {
+    lift.setDirection(DcMotorSimple.Direction.FORWARD);
     lift.setPower(0.3);
-    lift.setTargetPosition(backleft.getCurrentPosition() - 1);
+    lift.setTargetPosition(lift.getCurrentPosition() - 780);
     lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-    lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+  }
+
+  /**
+   * Describe this function...
+   */
+  private void my_2() {
+    lift.setDirection(DcMotorSimple.Direction.FORWARD);
+    lift.setPower(0.3);
+    lift.setTargetPosition(-300 - (startPos - lift.getCurrentPosition()));
+    TIME = new ElapsedTime();
+    while (TIME.seconds() < 2) {
+      lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+  }
+
+  /**
+   * Describe this function...
+   */
+  private void my_1() {
+    lift.setDirection(DcMotorSimple.Direction.FORWARD);
+    lift.setPower(0.3);
+    lift.setTargetPosition(-100 - (startPos - lift.getCurrentPosition()));
+    TIME = new ElapsedTime();
+    while (TIME.seconds() < 2) {
+      lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+  }
+
+  /**
+   * Describe this function...
+   */
+  private void my_3() {
+    lift.setDirection(DcMotorSimple.Direction.FORWARD);
+    lift.setPower(0.3);
+    lift.setTargetPosition(-550 - (startPos - lift.getCurrentPosition()));
+    TIME = new ElapsedTime();
+    while (TIME.seconds() < 2) {
+      lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+  }
+
+  /**
+   * Describe this function...
+   */
+  private void my_0() {
+    lift.setDirection(DcMotorSimple.Direction.FORWARD);
+    lift.setPower(0.3);
+    lift.setTargetPosition(80 - (startPos - lift.getCurrentPosition()));
+    TIME = new ElapsedTime();
+    while (TIME.seconds() < 2) {
+      lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
   }
 }
