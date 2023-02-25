@@ -1,5 +1,29 @@
 body{
   background-image: url("team.jpg");
   background-size: cover; 
-  background-position: center center;
+/*   overflow: hidden; */
+}
+
+.maininfo {
+  position: relative;
+  z-index: 0;
+  background-color: rgba(71,65,65,.7);
+  color: #fff;
+  text-decoration: none;
+  width: 90%;
+  height: 50%;
+  border-radius: 10px;
+  display: block;
+  padding: 4vw;
+  line-height: 26pt;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 250px;
+}
+
+@media (max-width: 600px) {
+  body{
+    background-position: center center;
+  }
 }
