@@ -1,0 +1,205 @@
+/*responsive menu complete, header for each page here*/
+
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #080c80;
+  text-align: center;
+  height: calc(50px + 5vw);
+  line-height: calc(50px + 5vw);
+  width: 100%;
+  text-align: center;
+}
+.topnav a {
+  position: relative;
+  float: left;
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: calc(10px + 4vw); /*min font size*/
+  margin: auto;
+}
+.topnav .logo1 {
+  float: left;
+  display: block;
+  width: auto;
+  height: 100%;
+  margin: auto;
+}
+.topnav .logo1:hover {
+  cursor: pointer;
+}
+.nav-bar .icon {
+  display: none;
+  right: 0;
+  text-decoration: none;
+  font-size: calc(10px + 2vw);
+}
+
+/* .topnav a:hover {
+  text-shadow: #FC0 0.2em 0 0.3em;
+  color: white;
+} */
+
+/* .topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+} */
+
+/* .topnav .icon {
+  display: none;
+} */
+nav {
+	width: 100%; 
+	background-color: #0b11bd; 
+	display: block;
+	justify-content: space-between;
+  float: left;
+}
+nav .nav-bar {
+  width: 100%;
+	padding: 20px; 
+	display: flex; 
+}
+nav .nav-bar .nav-bar_item {
+	list-style-type: none;
+	padding: 0px 20px;
+/*   border: 1px solid lightcoral; */
+}
+nav .nav-bar .dropdown {
+	position: relative;
+}
+nav .nav-bar .dropdown:after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 5px;
+	width: 7px;
+	height: 7px;
+	cursor: pointer;
+	transform: rotate(-45deg);
+	border-left: 2px solid white;
+	border-bottom: 2px solid white;
+	transition: 0.2s ease-in-out;
+}
+nav .nav-bar .dropdown:hover:after{
+	transform: rotate(135deg);
+}
+nav .nav-bar .dropdown .project {
+	position: absolute;
+	transform: translateX(-20px) translateY(5px);
+	width: 110px;
+	background-color: #0b11bd;
+	padding: 20px;
+	border-radius: 10px;
+	height: 0px;
+	overflow: hidden;
+	visibility: hidden;
+	transition: 0.2s ease-in-out;
+}
+nav .nav-bar .dropdown:hover .project{
+	height: 200px;
+	visibility: visible;
+}
+nav .nav-bar .dropdown .project .drop-item {
+	list-style-type: none;
+	margin-bottom: 10px;
+}
+
+nav .nav-bar .nav-bar_item a {
+	position: relative;
+	display: block; 
+	padding-bottom: 5px;
+	text-decoration: none;
+	color: #fff;
+	text-transform: uppercase;
+}
+nav .nav-bar .nav-bar_item a:after {
+	content: "";
+	position: absolute;
+	width: 0%;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #fff;
+	transition: 0.1s ease-in-out;
+}
+nav .nav-bar .nav-bar_item a:hover:after {
+	width: 100%;
+}
+
+@media screen and (max-width: 450px) {
+/*   hide elements of nav bar when screen is too small */
+  .nav-bar li:not(:first-child) {display: none;} 
+/*   display menu icon at righthand side of screen */
+  .nav-bar .icon {
+    margin-left: auto;
+    float: right;
+    display: block;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 450px) {
+/*   set relative position of items; */
+  .nav-bar.responsive { 
+    position: relative;
+    display: inline-block;
+  }
+/*   menu icon returns to init position after closing menu */
+  .nav-bar.responsive {
+    width: 100%;
+    overflow: hidden;
+    text-wrap: wrap;
+  }
+  .nav-bar.responsive .icon {
+/*    make this stay in its pre-menu position */
+    display: none;
+  }
+  .nav-bar.responsive li {
+    width: 100%;
+    float: none;
+  	position: relative;
+  	display: block; 
+    margin-right: auto;
+  	text-decoration: none;
+  }
+/*   shift lift left, keeps underline proerties */
+  .nav-bar.responsive li:after{
+  	content: "";
+  	position: absolute;
+    margin-left: auto;
+  }
+/*   side menu transition */
+/*   when the seasons tab is not hovered */
+  .nav-bar.responsive .dropdown .project{
+    overflow: hidden;
+    visibility: hidden;
+    display: block;
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    padding: 0px;
+/*     border: 1px solid yellow; */
+    border-radius: 0px;
+    transform: translateX(-20px) translateY(5px);
+    transition: 0.2s ease-in-out;
+  }
+/*   when hovered */
+  .nav-bar.responsive .dropdown:hover .project {
+  	height: 100%;
+  	visibility: visible;
+  }
+  .nav-bar.responsive .dropdown .project .drop-item {
+  	margin-bottom: 5px;
+  }
+}
