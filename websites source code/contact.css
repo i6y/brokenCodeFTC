@@ -1,0 +1,75 @@
+.maininfo {
+  position: relative;
+  z-index: 0;
+  text-decoration: none;
+  width: 90%;
+  height: 50%;
+  border-radius: 10px;
+  display: block;
+  padding: 40px;
+  line-height: 26pt;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 150px;
+  text-align: left;
+}
+.maininfo .email:hover{
+  text-decoration: underline;
+}
+.responsive {
+  width: 300px;
+  height: auto;
+  margin-left: -15px; 
+}
+.responsive:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 1px rgba(71,65,65,.7);
+}
+.sponsor{
+  width: calc(150px + 20vw);
+  line-height: 20pt;
+  display: block;
+  float: left;
+  text-align: center;
+  padding-top: 40px;
+}
+.sponsor:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+column{
+  position: relative;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  margin: auto;
+  padding: 10px;
+}
+h2.column{
+  color: #1bb4c2;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .maininfo {
+    text-decoration: none;
+    text-align: center;
+    overflow-wrap: break-word;
+    margin-bottom: 300px;
+  }
+  h1{
+    font-size: 20px;
+    line-height: 15pt;
+  }
+  .responsive {
+    width: 200px;
+    height: auto;
+  }
+  .sponsor{
+    width: 100%;
+  }
+}
