@@ -1,3 +1,48 @@
+.button-28 {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  min-height: 50px;
+  min-width: 0;
+  outline: none;
+  padding: 10px 20px;
+  text-align: center;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 230px;
+  will-change: transform;
+  margin-top: 15px;
+}
+.button-28 a{
+  text-decoration: none;
+  color: black;
+}
+.button-28:disabled {
+  pointer-events: none;
+}
+.button-28:hover {
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+.button-28:hover a{
+  color: white;
+}
+.button-28:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
 .maininfo {
   position: relative;
   z-index: 0;
@@ -16,6 +61,8 @@
 .maininfo .email:hover{
   text-decoration: underline;
 }
+
+/* images on sponsor page */
 .responsive {
   width: 300px;
   height: auto;
@@ -23,8 +70,9 @@
 }
 .responsive:hover {
   cursor: pointer;
-  box-shadow: 2px 2px 2px 1px rgba(71,65,65,.7);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+/* sponsor group (card organization) */
 .sponsor{
   width: calc(150px + 20vw);
   line-height: 20pt;
@@ -46,6 +94,9 @@ column{
   margin: auto;
   padding: 10px;
 }
+h2{
+  font-weight: 100;
+}
 h2.column{
   color: #1bb4c2;
   font-weight: bold;
@@ -53,17 +104,26 @@ h2.column{
   text-align: center;
   padding-bottom: 20px;
 }
+h2.team{
+  padding-bottom: 10px;
+}
 
 @media (max-width: 600px) {
   .maininfo {
     text-decoration: none;
     text-align: center;
     overflow-wrap: break-word;
+    margin: auto;
     margin-bottom: 300px;
+    width: 100%;
   }
   h1{
+    font-size: 30px;
+    line-height: 22pt;
+  }
+  h2.team{
+    padding-bottom: 10px;
     font-size: 20px;
-    line-height: 15pt;
   }
   .responsive {
     width: 200px;
@@ -72,4 +132,113 @@ h2.column{
   .sponsor{
     width: 100%;
   }
+}
+
+/* -----------------------------------------------
+ * seasons page timeline code 
+ * --------------------------------------------- */
+ /* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: var(--header-color);
+  top: 0;
+  bottom: 0;
+  left: 31px;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 100%;
+  padding-left: 70px;
+  padding-right: 25px;
+}
+
+.container::before {
+  left: 60px;
+  border: medium solid var(--header-color);
+  border-width: 10px 10px 10px 0;
+  border-color: transparent var(--header-color) transparent transparent;
+ }
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: var(--main-bg-color);
+  border: 4px solid var(--header-color);
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+Place the container to the right */
+.right {
+  left: 0;
+}
+
+/*shift circles to the line*/
+.right::after {
+  left: 15px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: var(--text-color);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  border-radius: 6px;
+}
+
+a .content{
+  text-decoration: none;
+  color: black;
+}
+
+.content:hover {
+  transition: all .2s ease-in-out;
+  transform: scale(1.01);
+  cursor: pointer;
+}
+
+.content.one{
+  background-image: url("5276in2012.png");
+  background-size: cover; 
+  /*   left-right up-down   --0 is the top of the image*/
+  background-position: center 10%;
+}
+
+.content.two{
+  background-image: url("2022-23.png");
+  background-size: cover; 
+  background-position: center 30%;
+}
+
+.content.three{
+  background-image: url("welcome.jpg");
+  background-size: cover; 
+  background-position: center 45%;
+}
+
+.shady{
+/*   background-color: rgba(var(--main-bg-color), 0.8); */
+  background-color: rgba(215, 231, 249, 0.9);
+  padding: 10px;
+  border-radius: 5px;
 }
