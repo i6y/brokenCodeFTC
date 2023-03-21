@@ -4,34 +4,28 @@
      <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>5276 Robotics </title>
-    <link rel="stylesheet" href="frame.css" type="text/css" />
-    <link rel="stylesheet" href="contact.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+    <link rel="stylesheet" href="frame.css" type="text/css" />
+    <link rel="stylesheet" href="team.css" type="text/css" />
   </head>
   <body>
 
     <div class="topnav" id="myTopnav">
-      <img href="index.html" src="logo.png" alt="logo" class="logo1"></img>
+      <a class="logo1" href="index.html"><img src="logo.png" alt="logo"></img></a>
       <a class="active">5276 Broken Code</a>
     </div>
     
     <nav>
     	<ul class="nav-bar" id="mainMenu">
     		<li id="ax" class="nav-bar_item"><a href="index.html">home</a></li>
-    		<li class="nav-bar_item dropdown">
-    			<a href="team.html">our team</a>
-    			<ul class="project">
-            <li class="drop-item"><a href="alumni.html">Alumni</a></li>
-    				<li class="drop-item"><a href="currentTeam.html">Current Members</a></li>
-    			</ul>
-    		</li>
+    		<li class="nav-bar_item"><a href="team.html">our team</a></li>
     		<li class="nav-bar_item dropdown">
     			<a href="seasons.html">seasons</a>
     			<ul class="project">
-            <li class="drop-item"><a href="covid">Covid Years and Prior</a></li>
-    				<li class="drop-item"><a href="2022-23">2022-23</a></li>
-    				<li class="drop-item"><a href="2023-24">2023-24</a></li>
+            <li class="drop-item"><a href="covid.html">Covid Years and Prior</a></li>
+    				<li class="drop-item"><a href="2022-23.html">2022-23</a></li>
+    				<li class="drop-item"><a href="2023-24.html">2023-24</a></li>
     			</ul>
     		</li>
     		<li class="nav-bar_item"><a href="contact.html">contact</a></li>
@@ -41,15 +35,145 @@
     	</ul>
     </nav>
 
-    <div class="maininfo">
-      <h1>Our Team</h1>
+    <div class="maininfo1">
+      <h1 style="color: black">Meet Our Team</h1>
       <br>
-      <h2 class="team">Our team is organized into separate programing, building, and media groups to ensure that we produce a competitive robot. Our club captains ensure that each group runs effetivley and is properly coordinated, organzing club meetings frequently throughout the season.
+      <h2 style="color: black" class="team">Our team is organized into separate programing, building, and media groups to ensure that we produce a competitive robot. Our club captains ensure that each group runs effetivley and is properly coordinated, organzing club meetings frequently throughout the season.
       </h2>
-      <button class="button-28" role="button"><a href="currentTeam.html">Meet our Current Team</a></button>
-      <button class="button-28" role="button"><a href="alumni.html">View our Alumni</a></button>
+      <br>
+      
+      <div class="tab">
+        <button id="init" class="tablinks" onclick="openTab(0, event, 'Team')">Current Members</button>
+        <button class="tablinks" onclick="openTab(0, event, 'Alum')">Alumni</button>
+      </div>
+      
+      <div id="Team" class="tabcontent">
+        
+        <div class="row">
+          
+          <div class="column">
+            <div id="card0" class="card">
+              <div class="popup">
+                <div class="image-cropper">
+                  <img src="will.png" alt="Alex Tucker" style="width:100%" onclick="openPopup(0)">
+                </div>
+                <h2>William Goldman</h2>
+                <p class="title">Building, Programming & CAD</p>
+                <span class="popuptext" id="0">
+                  <div class="container">
+                    <div class="image-cropper inPop">
+                    <img src="will.png" alt="William Goldman" style="width:100%">
+                    </div>
+                    <h3>William Goldman</h3>
+                    <p style="font-weight: bold;margin-bottom:5px">Builder, Programmer, Digital Designer</p>
+                    <p>Will has been with the team since its revival in the 2022-23 season. He is a team captain.</p>
+                    <p><a href="mailto:goldman.william@doversherborn.org" class="button">Email Me</a></p>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="column">
+            <div id="card1" class="card">
+              <div class="popup">
+                <div class="image-cropper">
+                  <img src="jackson.png" alt="Jackson Frey" style="width:100%" onclick="openPopup(1)">
+                </div>
+                <h2>Jackson Frey</h2>
+                <p class="title">Media & Outreach</p>
+                <span class="popuptext" id="1">
+                  <div class="container">
+                    <div class="image-cropper inPop">
+                    <img src="jackson.png" alt="Jackson Frey" style="width:100%">
+                    </div>
+                    <h3>Jackson Frey</h3>
+                    <p style="font-weight: bold;margin-bottom:5px">Media & Outreach</p>
+                    <p>Jackson has been with the team since its revival in the 2022-23 season. He is a team captain.</p>
+                    <p><a href="mailto:frey.jackson@doversherborn.org" class="button">Email Me</a></p>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+  
+          <div class="column">
+              <div id="card2" class="card">
+                <div class="popup">
+                  <div class="image-cropper">
+                    <img src="piku.png" alt="Piku Ashk" style="width:100%" onclick="openPopup(2)">
+                  </div>
+                  <h2>Piku Ashk</h2>
+                  <p class="title">Programming</p>
+                  <span class="popuptext" id="2">
+                    <div class="container">
+                      <div class="image-cropper inPop">
+                      <img src="piku.png" alt="Piku Ashk" style="width:100%">
+                      </div>
+                      <h3>Piku Ashk</h3>
+                      <p style="font-weight: bold;margin-bottom:5px">Programming</p>
+                      <p>Piku has been with the team since its revival in the 2022-23 season.  </p>
+                      <p><a href="mailto:piku@ashk.org" class="button">Email Me</a></p>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      <div id="Alum" class="tabcontent">
+        <div class="row">
+          
+          <div class="column">
+            <div id="card3" class="card">
+              <div class="popup">
+                <div class="image-cropper">
+                  <img src="aTucker.png" alt="Alex Tucker" style="width:100%" onclick="openPopup(3)">
+                </div>
+                <h2>Alex Tucker</h2>
+                <p class="title">Building & Programming</p>
+                <span class="popuptext" id="3">
+                  <div class="container">
+                    <div class="image-cropper inPop">
+                    <img src="aTucker.png" alt="Alex Tucker" style="width:100%">
+                    </div>
+                    <h3>Alex Tucker</h3>
+                    <p style="font-weight: bold;margin-bottom:5px">Builder & Programmer</p>
+                    <p>Alex worked with the team from 2019-2023. He currently attends _______ college. </p>
+                    <p><a href="mailto:23atucker691@gmail.com" class="button">Email Me</a></p>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="column">
+            <div id="card4" class="card">
+              <div class="popup">
+                <div class="image-cropper">
+                  <img src="aFrey.png" alt="Alex Frey" style="width:100%" onclick="openPopup(4)">
+                </div>
+                <h2>Alex Frey</h2>
+                <p class="title">Media</p>
+                <span class="popuptext" id="4">
+                  <div class="container">
+                    <div class="image-cropper inPop">
+                    <img src="aFrey.png" alt="Alex Frey" style="width:100%">
+                    </div>
+                    <h3>Alex Frey</h3>
+                    <p style="font-weight: bold;margin-bottom:5px">Media</p>
+                    <p>Alex worked with the team from 2022-2023. He currently attends _______ college. </p>
+                    <p><a href="mailto:frey.alex@doversherborn.org" class="button">Email Me</a></p>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
     </div>
-    
   
     <footer class="footer-distributed">
 			<div class="footer-right">
@@ -66,7 +190,7 @@
 				<p>5276 Broken Code &copy; 2023</p>
 			</div>
 		</footer>
-    
+
     <script src="script.js"></script>
     
   </body>
