@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+.column2 {
+  float: left;
+  width: 33.33%;
+  height: 300px;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row{
+  width: 100%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.maininfo{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 200px;
+}
+
+h1{
+  padding: 10px;
+  font-weight: 150;
+  font-size: 60px;
+}
+p{
+  font-size: 17px;
+}
+img {
+  vertical-align: middle;
+}
+.container img{
+  width: 100%;
+  height: 380px;
+}
+.container {
+  position: relative;
+  margin: auto;
+}
+ul li{
+  display: list-item;
+}
+ul li::marker {
+  font-size: 150%;
+  color: #061628;
+}
+.mySlides {
+  display: none;
+}
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 10px;
+  color: white;
+  width: 100%;
+  height: 40px;
+  margin: auto;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.columnimg {
+  float: left;
+  width: 33.33%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .column {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .column2 {
+    width: 100%;
+  }
+  .maininfo{
+    margin-bottom: 300px;
+  }
+}
